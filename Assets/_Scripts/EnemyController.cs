@@ -9,13 +9,15 @@ public class Speed {
 [System.Serializable]
 public class Boundary {
 	public float xMin, xMax, yMin, yMax;
-}
 
+}
 
 public class EnemyController : MonoBehaviour {
 	// PUBLIC INSTANCE VARIABLES
 	public Speed speed;
 	public Boundary boundary;
+	public GameController gameController;
+
 
 	// PRIVATE INSTANCE VARIABLES
 	private float _CurrentSpeed;
@@ -35,13 +37,17 @@ public class EnemyController : MonoBehaviour {
 		// Check bottom boundary
 		if (currentPosition.y <= boundary.yMin) {
 			this._Reset();
+		
+		
 		}
 	}
 
 	// resets the gameObject
-	private void _Reset() {
+	public void _Reset() {
 		this._CurrentSpeed = Random.Range (speed.minSpeed, speed.maxSpeed);
 		Vector2 resetPosition = new Vector2 (Random.Range(boundary.xMin, boundary.xMax), boundary.yMax);
 		gameObject.GetComponent<Transform> ().position = resetPosition;
+		this.gameController.ScoreValue += 10;
+
 	}
 }
