@@ -4,14 +4,20 @@ using System.Collections;
 public class PlayerCollider : MonoBehaviour {
 
 	// public instance variables 
-
 	public GameController gameController;
-	public EnemyController enemyController;
+	//public EnemyController enemyController;
+
+	// private 
+	private AudioSource[] _audioSources;
+	private AudioSource _hitSound; 
+	private AudioSource _engineSound;
 
 
 	// Use this for initialization
 	void Start () {
-	
+		this._audioSources = gameObject.GetComponents<AudioSource> ();
+		this._hitSound = this._audioSources [1];
+		this._engineSound = this._audioSources [2]; 
 	}
 	
 	// Update is called once per frame
@@ -22,7 +28,9 @@ public class PlayerCollider : MonoBehaviour {
 	public void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.CompareTag ("enemy")) {
 			this.gameController.LivesValue -= 1;
-			this.enemyController._Reset ();
+			this._hitSound.Play ();
+			//this.enemyController._Reset ();
+
 
 		}
 	}
