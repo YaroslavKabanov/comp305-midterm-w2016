@@ -5,7 +5,7 @@ public class PlayerCollider : MonoBehaviour {
 
 	// public instance variables 
 	public GameController gameController;
-	//public EnemyController enemyController;
+	public EnemyController enemyController;
 
 	// private 
 	private AudioSource[] _audioSources;
@@ -29,7 +29,9 @@ public class PlayerCollider : MonoBehaviour {
 		if (other.gameObject.CompareTag ("enemy")) {
 			this.gameController.LivesValue -= 1;
 			this._hitSound.Play ();
-			//this.enemyController._Reset ();
+			// destroying clone and no setting new 
+		//	Destroy (other.gameObject);
+			this.enemyController._Reset ();
 
 
 		}

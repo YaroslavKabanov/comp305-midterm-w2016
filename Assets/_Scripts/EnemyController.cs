@@ -30,6 +30,9 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+	
+
 		Vector2 currentPosition = gameObject.GetComponent<Transform> ().position;
 		currentPosition.y -= this._CurrentSpeed;
 		gameObject.GetComponent<Transform> ().position = currentPosition;
@@ -41,6 +44,7 @@ public class EnemyController : MonoBehaviour {
 		
 		}
 	}
+		
 
 	// resets the gameObject
 	public void _Reset() {

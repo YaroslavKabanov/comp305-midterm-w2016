@@ -81,6 +81,7 @@ public class GameController : MonoBehaviour {
 		this.ScoreLabel.gameObject.SetActive (false);
 	//	this.tank.gameObject.SetActive (false);
 		this.RestartButton.gameObject.SetActive (true);
+
 	}
 
 	// generate Clouds
